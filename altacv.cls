@@ -287,10 +287,10 @@
 
 \renewenvironment{quote}{\color{accent}\itshape\large}{\par}
 
-% Fork (before v1.6.5a): Two bigskip tags added for better section separation
+% Fork v1.7.1a: cvsection skips adjusted for better space management
 \newcommand{\cvsection}[2][]{%
-  \bigskip%  %% bugfix in v1.6.2
-  \bigskip%  %% bugfix in v1.6.2
+  \bigskip
+  \medskip
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
   {\color{headingrule}\rule{\linewidth}{2pt}\par}
@@ -309,22 +309,24 @@
 }
 
 % v1.7: adds accsupp ActualText for location and date markers
-% Fork (before v1.7.1a): Structure updated from forked adaption before v1.6.5a
+% Fork v1.7.1a: Structure adjusted with fork's styling
 \newcommand{\cvevent}[4]{%
   {\large\color{emphasis}#1}
   \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
-  \large{\color{accent} | #2\par}
-  \smallskip}
+  \ifstrequal{#2}{}{}{%
+    \large{\color{accent} | #2\par}
+    \smallskip}%
   \ifstrequal{#3}{}{}{%
     {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
-      ~#3}%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}
+      \color{accent}\cvDateMarker\EndAccSupp{}%
+      \color{emphasis}~#3}%
     }}%
   \ifstrequal{#4}{}{}{%
     {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
-        ~#4}%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}
+      \color{accent}\cvLocationMarker\EndAccSupp{}%
+      \color{emphasis}~#4}%
     }}\par
   \medskip\normalsize
 }

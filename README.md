@@ -1,6 +1,7 @@
-# AltaCV, yet another LaTeX CV/Résumé class | Now forked
+# AltaCV, yet another LaTeX CV/Résumé class and forked by NicolasOmar
 
 v1.7.1 (25 Aug 2023), by LianTze Lim (liantze@gmail.com)
+
 v1.7.1a (9 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
 
 ## Original Sample
@@ -22,8 +23,8 @@ v1.7.1a (9 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gm
 
 ## Forked Sample
 
-### v1.7.1a;
-* **Updated:** Resume strcture updated from changes on `v1.7.1`
+### v1.7.1a:
+* **Updated:** Résumé structure updated from changes on `v1.7.1`
 
 ### v1.6.5c:
 * **Added:** (`sloppypar`) environment added and improved to solve `\cvtag` list overlapping with `\cvsection` width.
