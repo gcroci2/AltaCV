@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.6.5, 3 Nov 2022) written by
+% This is altacv.cls (v1.7.1, 25 Aug 2023) written by
 % LianTze Lim (liantze@gmail.com).
-% This is also a fork (v1.6.5c, 27 Jun 2023) written by
+% This is also a fork (v1.7.1a, 9 Jan 2024) written by
 % Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{altacv}[2023/06/27 AltaCV v1.6.5c, yet another alternative class for a resume/curriculum vitae, now forked.]
+\ProvidesClass{altacv}[2024/01/09 AltaCV v1.7.1a, yet another alternative class for a resume/curriculum vitae.]
 
 %% v1.1: Optionally load academicons
 %% v1.4: Nope, academicons is unnecessary; fontawesome5 has \faOrcid.
@@ -91,21 +91,36 @@
 \fi
 
 \RequirePackage{xcolor}
-\newcommand{\itemmarker}{{\small\textbullet}}
-\newcommand{\ratingmarker}{\faCircle}
+
+\colorlet{accent}{blue!70!black}
+\colorlet{emphasis}{black}
+\colorlet{heading}{black}
+\colorlet{headingrule}{black}
+\colorlet{subheading}{emphasis}
+\colorlet{body}{black!80!white}
+\colorlet{name}{heading}
+\colorlet{tagline}{accent}
+% Renamed or added v1.7
+\newcommand{\cvItemMarker}{{\small\textbullet}}
+\newcommand{\cvRatingMarker}{\faCircle}
+\let\itemmarker\cvItemMarker      % for backward compatibility
+\let\ratingmarker\cvRatingMarker  % for backward compatibility
+\newcommand{\cvDateMarker}{\faCalendar[regular]}
+\newcommand{\cvLocationMarker}{\faMapMarker}
+\newcommand{\locationname}{Location}
+\newcommand{\datename}{Date}
 
 \RequirePackage{tikz}
 \usetikzlibrary{arrows}
 \RequirePackage[skins]{tcolorbox}
 \RequirePackage[inline]{enumitem}
 \setlist{leftmargin=*,labelsep=0.5em,nosep,itemsep=0.25\baselineskip,after=\vspace{0.25\baselineskip}}
-\setlist[itemize]{label=\itemmarker}
+\setlist[itemize]{label=\cvItemMarker}
 \RequirePackage{graphicx}
 \RequirePackage{trimclip}
 \RequirePackage{dashrule}
 \RequirePackage{multirow,tabularx}
 \RequirePackage{changepage}
-% \RequirePackage{marginfix}
 
 \setlength{\parindent}{0pt}
 \newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
@@ -134,21 +149,26 @@
 %% v1.3.1: using \unfriendlydetokenize to avoid breaking unicode
 %% v1.6: Use accsupp so that when copying/pasting the icon from PDF to a text
 %%       file, the icon name is pasted
+%% v1.7: Some tweaks/corrections so that accsupp is for icons only
+%% v1.7.1: Bugfix to support some symbol commands e.g. academicons commands 
 \ExplSyntaxOn
 \NewDocumentCommand{\printinfo}{m m o}{%
-  \BeginAccSupp{method=escape,ActualText={#1:~#2}}
   \IfNoValueTF{#3}{%
-    \mbox{\textcolor{accent}{\normalfont #1}~\utffriendlydetokenize{#2}\hspace{2em}}%
+    \mbox{\textcolor{accent}%
+    {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
+    ~\utffriendlydetokenize{#2}\hspace{2em}}%
   }{%
      \if@withhyper%
-      \mbox{\textcolor{accent}{\normalfont #1}~
-      \href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
+      \mbox{\textcolor{accent}%
+      {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
+      ~\href{#3}{\utffriendlydetokenize{#2}}\hspace{2em}}
      \else%
        \ClassWarning{Please specify [withhyper] option to enable hyperlinks. Printing out full hyperlink prefix #1 for now.}%
-      \mbox{\textcolor{accent}{\normalfont #1}~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
+      \mbox{\textcolor{accent}
+      {\BeginAccSupp{method=escape,ActualText={\detokenize{#1}:}}\normalfont #1\EndAccSupp{}}%
+      ~{\utffriendlydetokenize{#3#2}}\hspace{2em}}%
      \fi%
   }%
-  \EndAccSupp{}
 }%
 
 
@@ -195,7 +215,7 @@
 \NewInfoField{github}{\faGithub}[https://github.com/]
 % v1.?? Use fontawesome5 for Orcid symbol
 \NewInfoField{orcid}{\faOrcid}[https://orcid.org/]
-\NewInfoField{location}{\faMapMarker}
+\NewInfoField{location}{\cvLocationMarker}
 % Fork (before v1.6.5a): New optional options added for dev.to, medium and npm accounts
 \NewInfoField{dev}{\faDev}[https://dev.to/]
 \NewInfoField{medium}{\faMedium}[https://medium.com/@]
@@ -283,25 +303,36 @@
   \medskip
 }
 
-% v1.1.4: fixes inconsistent font size
-% Fork (before v1.6.5a): Structure modified to include change title, company name, start/end dates and work location (only a string)
-\newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1}
-  \ifstrequal{#2}{}{}{\large{\color{accent} | #2}}
-  \par\medskip\normalsize
-  \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faCalendar\color{emphasis}~#3}}}
-  \ifstrequal{#4}{}{}{{\small\makebox[0.5\linewidth][l]{\color{accent}\faMapMarker\color{emphasis}~#4}}}\par
-  \medskip\normalsize
-}
-
 % Fork v1.6.5b
 \newcommand{\cvreference}[2]{
   \textcolor{accent}{\href{#2}{#1}}
 }
 
+% v1.7: adds accsupp ActualText for location and date markers
+% Fork (before v1.7.1a): Structure updated from forked adaption before v1.6.5a
+\newcommand{\cvevent}[4]{%
+  {\large\color{emphasis}#1}
+  \smallskip\normalsize
+  \ifstrequal{#2}{}{}{
+  \large{\color{accent} | #2\par}
+  \smallskip}
+  \ifstrequal{#3}{}{}{%
+    {\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
+      ~#3}%
+    }}%
+  \ifstrequal{#4}{}{}{%
+    {\small\makebox[0.5\linewidth][l]%
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
+        ~#4}%
+    }}\par
+  \medskip\normalsize
+}
+
+% v1.7: adds accsupp for the icon as well
 \newcommand{\cvachievement}[3]{%
   \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+  \multirow{2}{*}{\Large\color{accent}\BeginAccSupp{method=escape,ActualText={#1: }}#1\EndAccSupp{}} & \bfseries\textcolor{emphasis}{#2}\\
   & #3
   \end{tabularx}%
   \smallskip
@@ -327,9 +358,9 @@
   \BeginAccSupp{method=plain,ActualText={#2}}
   \foreach \x in {1,...,5}{%
     \ifdimequal{\x pt - #2 pt}{0.5pt}%
-    {\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\ratingmarker}%
-     \clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\ratingmarker}}
-    {\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\ratingmarker}%
+    {\clipbox*{0pt -0.25ex {.5\width} {\totalheight}}{\color{accent}\cvRatingMarker}%
+     \clipbox*{{.5\width} -0.25ex {\width} {\totalheight}}{\color{body!30}\cvRatingMarker}}
+    {\ifdimgreater{\x bp}{#2 bp}{\color{body!30}}{\color{accent}}\cvRatingMarker}%
   }\EndAccSupp{}\par%
 }
 
