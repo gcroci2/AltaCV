@@ -1,4 +1,4 @@
-# AltaCV, yet another LaTeX CV/Résumé class and forked by NicolasOmar
+# AltaCV, yet another LaTeX CV/Résumé class | Fork by NicolasOmar
 
 v1.7.1 (25 Aug 2023), by LianTze Lim (liantze@gmail.com)
 
@@ -7,6 +7,7 @@ v1.7.1a (9 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gm
 ## Original Sample
 
 * Added \mynames{...} to specify names to be highlighted in the publication list on 3 Nov 2022
+
 * v1.7 (9 Aug 2023) changes:
   - `\itemmarker` and `\ratingmarker` renamed to `\cvItemMarker` and `\cvRatingMarker`
   - Added `\cvLocationMarker` and `\cvDateMarker` so that these icons in `\cvevent`
