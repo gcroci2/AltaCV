@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%
 % This is altacv.cls (v1.7.1, 25 Aug 2023) written by
 % LianTze Lim (liantze@gmail.com).
-% This is also a fork (v1.7.1a, 9 Jan 2024) written by
+% This is also a fork (v1.7.1b, 11 Jan 2024) written by
 % Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{altacv}[2024/01/09 AltaCV v1.7.1a, yet another alternative class for a resume/curriculum vitae.]
+\ProvidesClass{altacv}[2024/01/11 AltaCV v1.7.1b, yet another alternative class for a resume/curriculum vitae| Forked by NicolasOmar.]
 
 %% v1.1: Optionally load academicons
 %% v1.4: Nope, academicons is unnecessary; fontawesome5 has \faOrcid.
@@ -340,17 +340,23 @@
   \smallskip
 }
 
-% Fork v1.6.5c: A parser for several tags that will reutilize the cvtag component in a less verbose way
+% Fork v1.6.5c: Added new tag list parser for several items that will reutilize the cvtag component in a less verbose way
+% Fork v1.7.1b: Adjusted to new property in cvtag
 \newcommand{\cvtags}[1]{%
-  \foreach \tagValue in {#1} {%
-      \cvtag{\tagValue}
+  \foreach \value/\isHighlighted in {#1} {%
+    \cvtag{\value}{\isHighlighted}
   }
 }
 
 % Fork (before v1.6.5a): Tags now have a more consistent vertican and horizontal separation
-\newcommand{\cvtag}[1]{%
-  \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.75ex,text height=1.5ex,text depth=.25ex]{#1};
-  \vspace{0.25ex}
+% Fork v1.7.1b: cvtag now includes a boolean flag to highlight its text and border among other of its type
+\newcommand{\cvtag}[2]{%
+  \ifthenelse{\equal{#2}{true}}{%
+    \tikz[baseline]\node[anchor=base,draw=accent,rounded corners,inner xsep=1ex,inner ysep=0.8ex,text height=1.5ex,text depth=.25ex]{\markword{#1}};
+  }{%
+    \tikz[baseline]\node[anchor=base,draw=body,rounded corners,inner xsep=1ex,inner ysep=0.8ex,text height=1.5ex,text depth=.25ex]{#1};
+  }
+  \vspace{0.27ex}
 }
 
 % v1.6: Use accsupp so that the actual numeric value is copied/pasted
@@ -443,6 +449,11 @@
       \item[\small\normalfont\mailaddresssymbol] \href{mailto:#3}{#3}
     \fi
   \end{description}
+}
+
+% Fork v1.7.1b: New command markword added as a shortcut to change word color to the one assigned as accent
+\newcommand{\markword}[1]{
+  \textcolor{accent}{#1}
 }
 
 \newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}

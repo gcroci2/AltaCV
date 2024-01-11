@@ -1,8 +1,8 @@
-# AltaCV, yet another LaTeX CV/Résumé class | Fork by NicolasOmar
+# AltaCV, yet another LaTeX CV/Résumé class | Forked by NicolasOmar
 
 v1.7.1 (25 Aug 2023), by LianTze Lim (liantze@gmail.com)
 
-v1.7.1a (9 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
+v1.7.1b (11 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
 
 ## Original Sample
 
@@ -24,25 +24,29 @@ v1.7.1a (9 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gm
 
 ## Forked Sample
 
-### v1.7.1a:
-* **Updated:** Résumé structure updated from changes on `v1.7.1`
+* `v1.7.1b` (11 Jan 2024):
+  * **Added:** (`markword`) tag created to change a word color using the assigned in `accent`.
+  * **Updated:** (`cvtags` & `cvtag`) now includes a boolean flag to highlight its text and border among others of its type (useful to draw attention from main points).
 
-### v1.6.5c:
-* **Added:** (`sloppypar`) environment added and improved to solve `\cvtag` list overlapping with `\cvsection` width.
-* **Added:** (`\cvtags`) tag created to parse several skills in tag/pill way in a less verbose way than before.
+* `v1.7.1a` (9 Jan 2024):
+  * **Updated:** Résumé structure updated from changes from `v1.7.1`.
 
-### v1.6.5b:
-* **Updated:** (`\cvref`) tag rebuilt from original version with optional display for *LinkedIn* and *Email* links.
+* `v1.6.5c` (27 Jun 2023):
+  * **Added:** (`sloppypar`) environment added and improved to solve `\cvtag` list overlapping with `\cvsection` width.
+  * **Added:** (`\cvtags`) tag created to parse several skills in tag/pill way in a less verbose way than before.
 
-### v1.6.5a and before:
-* **Added:** Contact options added for dev.to, medium and npm accounts.
-* **Added:** Adapted color scheme as well as `darkmode` (enable in line 31 of file `main.tex`).
-* **Added:** (`\cvlang`) tag added for languages rating, avoiding star/button/progress bar previous ideas, I made a simpler and more accurate representation using a single string, which will be colored to be oustanding.
-* **Updated:** (`\@makeaphoto`) Photo image has modified to include a border around it, which color is aligned to document's theme.
-* **Updated:** (`\altacv@add@photo@left`) Horizontal space changed from 1ex to 6,5ex to align photo container width to smaller column width (25%).
-* **Updated:** (`\cvsection`) separation has been changed by adding 2 `\bigskip`.
-* **Updated:** (`\cvevent`) structure modified to include change title, company name, start/end dates and work location (only a string).
-* **Updated:** (`\cvtag`) items now have a more consistent vertican and horizontal separation.
+* `v1.6.5b` (27 Jun 2023):
+  * **Updated:** (`\cvref`) tag rebuilt from the original version with optional display for *LinkedIn* and *Email* links.
+
+* `v1.6.5a` and before (29 Jan 2023):
+  * **Added:** New contact options added for dev.to, medium, and npm accounts.
+  * **Added:** Adapted color scheme as well as `darkmode` (enable in line 31 of file `main.tex`).
+  * **Added:** (`\cvlang`) tag added for languages rating, avoiding star/button/progress bar previous ideas, I made a simpler and more accurate representation using a single string, which will be colored to be oustanding.
+  * **Updated:** (`\@makeaphoto`) The Photo image has been modified to include a border around it, which color is aligned with the document's theme.
+  * **Updated:** (`\altacv@add@photo@left`) Horizontal space changed from 1ex to 6,5ex to align photo container width to smaller column width (25%).
+  * **Updated:** (`\cvsection`) separation has been changed by adding 2 `\bigskip`.
+  * **Updated:** (`\cvevent`) structure modified to include change title, company name, start/end dates and work location (only a string).
+  * **Updated:** (`\cvtag`) items now have a more consistent vertical and horizontal separation.
 
 Though if you're creating your own CV/résumé, you'd probably prefer using the online template ([view/open on Overleaf](https://www.overleaf.com/latex/templates/altacv-nicolasomar-fork/htfpmrwhbwpw)):
 
