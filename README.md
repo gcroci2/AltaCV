@@ -1,4 +1,4 @@
-# AltaCV, yet another LaTeX CV/Résumé class | Forked by NicolasOmar
+# AltaCV, yet another LaTeX CV/Résumé class | Forked by gcroci2
 
 v1.7.1 (25 Aug 2023), by LianTze Lim (liantze@gmail.com)
 
@@ -47,8 +47,6 @@ v1.7.1b (11 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@g
   * **Updated:** (`\cvsection`) separation has been changed by adding 2 `\bigskip`.
   * **Updated:** (`\cvevent`) structure modified to include change title, company name, start/end dates and work location (only a string).
   * **Updated:** (`\cvtag`) items now have a more consistent vertical and horizontal separation.
-
-Though if you're creating your own CV/résumé, you'd probably prefer using the online template ([view/open on Overleaf](https://www.overleaf.com/latex/templates/altacv-nicolasomar-fork/htfpmrwhbwpw)):
 
 ### This is how the final version looks like on Light & Dark mode
 <img src="sampleLightMode.png" title="Résumé sample | Light mode, based on AltaCV" alt="Résumé sample | Light mode, based on AltaCV" width="300px">
