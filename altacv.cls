@@ -245,7 +245,9 @@
   \medskip
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}
+  {\begin{tikzpicture}
+    \shade[left color=headingrule, right color=white] (0,0) rectangle (\linewidth,2pt);
+  \end{tikzpicture}\par}
   \medskip
 }
 
