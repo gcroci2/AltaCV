@@ -24,10 +24,6 @@
 %% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
 % \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-%% Fork (before v1.6.5a): CV dark mode toggle enabler to use a inverted color palette.
-%% Use the "darkmode" option if you want a color palette used to 
-% \documentclass[10pt,a4paper,ragged2e,withhyper,darkmode]{altacv}
-
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
 %% AltaCV uses the fontawesome5 and academicons fonts
@@ -58,22 +54,12 @@
   \renewcommand{\familydefault}{\sfdefault}
 \fi
 
-% Fork (before v1.6.5a): Change the color codes to test your personal variant on any mode
-\ifdarkmode%
-  \definecolor{PrimaryColor}{HTML}{C69749}
-  \definecolor{SecondaryColor}{HTML}{D49B54}
-  \definecolor{ThirdColor}{HTML}{1877E8}
-  \definecolor{BodyColor}{HTML}{ABABAB}
-  \definecolor{EmphasisColor}{HTML}{ABABAB}
-  \definecolor{BackgroundColor}{HTML}{191919}
-\else%
-  \definecolor{PrimaryColor}{HTML}{001F5A}
-  \definecolor{SecondaryColor}{HTML}{0039AC}
-  \definecolor{ThirdColor}{HTML}{F3890B}
-  \definecolor{BodyColor}{HTML}{666666}
-  \definecolor{EmphasisColor}{HTML}{2E2E2E}
-  \definecolor{BackgroundColor}{HTML}{E2E2E2}
-\fi%
+\definecolor{PrimaryColor}{HTML}{001F5A}
+\definecolor{SecondaryColor}{HTML}{0039AC}
+\definecolor{ThirdColor}{HTML}{F3890B}
+\definecolor{BodyColor}{HTML}{666666}
+\definecolor{EmphasisColor}{HTML}{2E2E2E}
+\definecolor{BackgroundColor}{HTML}{FFFFFF}
 
 \colorlet{name}{PrimaryColor}
 \colorlet{tagline}{SecondaryColor}

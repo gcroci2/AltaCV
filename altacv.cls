@@ -35,8 +35,6 @@
 %% v1.3: load hyperref for clickable hyperlinks
 \newif\if@withhyper
 \DeclareOption{withhyper}{\@withhypertrue}
-\newif\ifdarkmode
-\DeclareOption{darkmode}{\darkmodetrue}
 \ProcessOptions\relax
 
 \LoadClass{extarticle}
