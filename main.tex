@@ -80,8 +80,9 @@
 \renewcommand{\itemmarker}{{\small\textbullet}}
 \renewcommand{\ratingmarker}{\faCircle}
 
+\input{pubs-num.cfg}
 %% sample.bib contains your publications
-%% \addbibresource{main.bib}
+\addbibresource{main.bib}
 
 \begin{document}
     \name{John Doe}
@@ -200,8 +201,8 @@
             \end{quote}
         % ----- ABOUT ME -----
         
-        % ----- EXPERIENCE -----
-        \cvsection{Experience}
+        % ----- WORK EXPERIENCE -----
+        \cvsection{Work Experience}
             \cvevent{Charge}{Company}{Mm YYYY -- Mm YYYY}{City, Country}
             \begin{itemize}
                 \item First achievement
@@ -216,24 +217,10 @@
                 \item Second achievement
                 \item Third achievement
             \end{itemize}
-        % ----- EXPERIENCE -----
-        
-        % ----- EDUCATION -----
-        \cvsection{Education}
-            \cvevent{Title}{Institution}{Mm YYYY -- Mm YYYY}{City, Country}
-            \begin{itemize}
-                \item GPA: 1,23
-            \end{itemize}
-            \divider
-            
-            \cvevent{Title}{Institution}{Mm YYYY -- Mm YYYY}{City, Country}
-            \begin{itemize}
-                \item GPA: 1,23
-            \end{itemize}
-        % ----- EDUCATION -----
-        
+        % ----- WORK EXPERIENCE -----
+
         % ----- PROJECTS -----
-        \cvsection{Projects}
+        \cvsection{OSS Projects \& Contributions}
             \cvevent{Project 1 }{\cvreference{\faGithub}{https://github.com/user/repo}\cvreference{| \faGlobe}{https://project-demo.com/}}{Mm YYYY -- Mm YYYY}{}
             \begin{itemize}
                 \item Item 1
@@ -247,5 +234,59 @@
                 \item Item 2
             \end{itemize}
         % ----- PROJECTS -----
+        
     \end{paracol}
+    
+    % ----- EDUCATION -----
+    \cvsection{Education}
+        \cvevent{Title}{Institution}{Mm YYYY -- Mm YYYY}{City, Country}
+        \begin{itemize}
+            \item GPA: 1,23
+        \end{itemize}
+        \divider
+        
+        \cvevent{Title}{Institution}{Mm YYYY -- Mm YYYY}{City, Country}
+        \begin{itemize}
+            \item GPA: 1,23
+        \end{itemize}
+    % ----- EDUCATION -----
+
+
+    % ----- MISCELLANEOUS -----
+    \cvsection{Miscellaneous}
+        \cvevent{Title}{Institution/Company}{Mm YYYY -- Mm YYYY}{City, Country}
+        \begin{itemize}
+            \item Item 1
+            \item Item 2
+        \end{itemize}
+        \divider
+        
+        \cvevent{Title}{Institution/Company}{Mm YYYY -- Mm YYYY}{City, Country}
+        \begin{itemize}
+            \item Item 1
+            \item Item 2
+        \end{itemize}
+    % ----- MISCELLANEOUS -----
+
+
+    \cvsection{Publications}
+
+    \mynames{Lim/Lian\bibnamedelima Tze,
+    Wong/Lian\bibnamedelima Tze,
+    Lim/Tracy,
+    Lim/L.\bibnamedelimi T.}
+    %% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+
+    \nocite{*}
+
+    \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+
+    \divider
+
+    \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+
+    \divider
+
+    \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+
 \end{document}
