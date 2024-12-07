@@ -111,26 +111,36 @@
     % break across pages if things get too long.
     \begin{paracol}{2}
         % ----- TECH STACK -----
+        \cvsection{TECH LANGS}
+            %% Fork v1.6.5c: The sloppypar* environment is used to avoid tags overlapping with section width
+            \begin{sloppypar*}
+                %% Fork 1.7.1b: Now in case you want to highlight any tag, just add a '/true' property next to its text and it will change tag's text and border colors.
+                \cvtags{One/true, Two, Three/true, Four, Five/true, Six, Seven/true, Eight, Nine/true}
+            \end{sloppypar*}
+        % ----- TECH STACK -----
+
+        % ----- TECH STACK -----
         \cvsection{TECH STACK}
             %% Fork v1.6.5c: The sloppypar* environment is used to avoid tags overlapping with section width
             \begin{sloppypar*}
                 %% Fork 1.7.1b: Now in case you want to highlight any tag, just add a '/true' property next to its text and it will change tag's text and border colors.
-                \cvtags{One/true, Two, Three/true, Four, Five/true, Six, Seven/true, Eight, Nine/true, Ten}
-                \medskip
-
-                \cvtags{Red, Yellow/true, Blue, Green/true, Violet, Orange/true}
+                \cvtags{One/true, Two, Three/true, Four, Five/true, Six, Seven/true, Eight, Nine/true}
             \end{sloppypar*}
         % ----- TECH STACK -----
         
-        % ----- LEARNING -----
-        \cvsection{Learning}
+        % ----- DATA STACK -----
+        \cvsection{DATA STACK}
             \begin{sloppypar*}
-                \cvtags{Uno, Dos/true, Tres, Cuatro/true, Cinco, Seis/true, Siete, Ocho/true, Nueve, Diez/true}
-                \medskip
-
-                \cvtags{Rojo/true, Amarillo, Azul/true, Verde, Violeta/true, Naranja, Marron/true, Blanco, Gris/true, Negro}
+                \cvtags{Uno, Dos/true, Tres, Cuatro/true, Cinco, Seis/true, Siete, Ocho/true, Nueve}
             \end{sloppypar*}
-        % ----- LEARNING -----
+        % ----- DATA STACK -----
+
+        % ----- OTHERS -----
+        \cvsection{OTHERS}
+            \begin{sloppypar*}
+                \cvtags{Uno, Dos/true, Tres, Cuatro/true, Cinco, Seis/true, Siete, Ocho/true, Nueve}
+            \end{sloppypar*}
+        % ----- OTHERS -----
         
         % ----- LANGUAGES -----
         \cvsection{Languages}
@@ -138,7 +148,7 @@
             \divider
 
             \cvlang{Lang 2}{Basic / A2}
-            \bigskip
+            \medskip
             %% Yeah I didn't spend too much time making all the
             %% spacing consistent... sorry. Use \smallskip, \medskip,
             %% \bigskip, \vpsace etc to make ajustments.
