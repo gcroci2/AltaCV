@@ -26,17 +26,12 @@
 %% v1.1: Optionally load academicons
 %% v1.4: Nope, academicons is unnecessary; fontawesome5 has \faOrcid.
 \DeclareOption{academicons}{\ClassWarning{altacv}{academicons option is now obsolete and unnecessary.}}
-%% v1.1.3: Choice of round/square photo
-\newif\if@normalphoto
-\DeclareOption{normalphoto}{\@normalphototrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \newif\if@raggedtwoe
 \DeclareOption{ragged2e}{\@raggedtwoetrue}
 %% v1.3: load hyperref for clickable hyperlinks
 \newif\if@withhyper
 \DeclareOption{withhyper}{\@withhypertrue}
-\newif\ifdarkmode
-\DeclareOption{darkmode}{\darkmodetrue}
 \ProcessOptions\relax
 
 \LoadClass{extarticle}
@@ -213,6 +208,7 @@
 \NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
+\NewInfoField{scholar}{\faGraduationCap}[https://scholar.google.com/citations?user=]
 % v1.?? Use fontawesome5 for Orcid symbol
 \NewInfoField{orcid}{\faOrcid}[https://orcid.org/]
 \NewInfoField{location}{\cvLocationMarker}
@@ -220,49 +216,6 @@
 \NewInfoField{dev}{\faDev}[https://dev.to/]
 \NewInfoField{medium}{\faMedium}[https://medium.com/@]
 \NewInfoField{npm}{\faNpm}[https://www.npmjs.com/~]
-
-% v1.2: Support for multiple photos
-\newlength{\altacv@photos@width}
-\newlength{\altacv@photo@diam@left}
-\newlength{\altacv@photo@diam@right}
-\def\altacv@left@photos{}
-\def\altacv@right@photos{}
-
-\newcommand{\@makeaphoto}[2]{%
-  \begin{minipage}{#1}%
-    \if@normalphoto
-      \includegraphics[width=\linewidth]{#2}
-    \else
-% Fork (before v1.6.5a): The photo image has modified to include a border around it, which color is aligned to document's theme
-      \tikz\filldraw[color=headingrule, fill overzoom image={#2}, ultra thick](-1,0) circle[radius=0.5\linewidth];
-    \fi%
-  \end{minipage}%
-}
-
-% Fork (before v1.6.5a): Horizontal space changed from 1ex to 6,5ex to align photo container width to smaller column width (25%)
-\newcommand{\altacv@add@photo@left}[1]{%
-  \appto{\altacv@left@photos}{%
-    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{6,5ex}%
-  }%
-  \addtolength{\altacv@photos@width}{\altacv@photo@diam@left}%
-  \addtolength{\altacv@photos@width}{1ex}%
-}
-\newcommand{\altacv@add@photo@right}[1]{%
-  \appto{\altacv@right@photos}{%
-    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{6,5ex}%
-  }%
-  \addtolength{\altacv@photos@width}{\altacv@photo@diam@right}%
-  \addtolength{\altacv@photos@width}{1ex}%
-}
-\newcommand{\photoL}[2]{%
-  \setlength{\altacv@photo@diam@left}{#1}%
-  \forcsvlist{\altacv@add@photo@left}{#2}%
-}
-\newcommand{\photoR}[2]{%
-  \setlength{\altacv@photo@diam@right}{#1}%
-  \forcsvlist{\altacv@add@photo@right}{#2}%
-}
-\let\photo\photoR
 
 \newcommand{\namefont}{\Huge\bfseries}
 \newcommand{\taglinefont}{\large\bfseries}
@@ -272,16 +225,18 @@
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \altacv@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
-    \raggedright%
-    {\namefont\color{name}\MakeUppercase{\@name}\par}
-    \medskip
-    {\taglinefont\color{tagline}\@tagline\par}
-    \medskip
-    {\personalinfofont\@personalinfo\par}
-    \end{minipage}\hfill%
-    \altacv@right@photos\par%
+    \noindent
+    \begin{minipage}{0.6\textwidth}%
+      \raggedright%
+      {\namefont\color{name}\MakeUppercase{\@name}\par}
+      \medskip
+      {\taglinefont\color{tagline}\@tagline\par}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}%
+      \raggedright%
+      {\personalinfofont\@personalinfo\par}
+    \end{minipage}%
+    \par%
   \endgroup\medskip
 }
 
@@ -293,7 +248,9 @@
   \medskip
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
   {\color{heading}\cvsectionfont\MakeUppercase{#2}}\\[-1ex]%
-  {\color{headingrule}\rule{\linewidth}{2pt}\par}
+  {\begin{tikzpicture}
+    \shade[left color=headingrule, right color=white] (0,0) rectangle (\linewidth,2pt);
+  \end{tikzpicture}\par}
   \medskip
 }
 
@@ -308,27 +265,34 @@
   \textcolor{accent}{\href{#2}{#1}}
 }
 
-% v1.7: adds accsupp ActualText for location and date markers
-% Fork v1.7.1a: Structure adjusted with fork's styling
 \newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1}
-  \smallskip\normalsize
-  \ifstrequal{#2}{}{}{%
-    \large{\color{accent} | #2\par}
-    \smallskip}%
-  \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}
-      \color{accent}\cvDateMarker\EndAccSupp{}%
-      \color{emphasis}~#3}%
-    }}%
-  \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}
-      \color{accent}\cvLocationMarker\EndAccSupp{}%
-      \color{emphasis}~#4}%
-    }}\par
-  \medskip\normalsize
+  % Title and Subtitle
+  \noindent
+  \makebox[0.4\linewidth][l]{%
+    {\large\color{emphasis}#1}
+    \smallskip\normalsize
+    \ifstrequal{#2}{}{}{%
+      \large{\color{accent} | #2}%
+      \smallskip}%
+  }%
+  % Location and Date
+  \makebox[0.6\linewidth][l]{%
+    \ifstrequal{#3}{}{}{%
+      {\small\makebox[0.3\linewidth][l]%
+        {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}%
+        \color{accent}\cvLocationMarker\EndAccSupp{}%
+        \color{emphasis}~#3}%
+      }%
+    }%
+    \ifstrequal{#4}{}{}{%
+      {\small\makebox[0.4\linewidth][l]%
+        {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}%
+        \color{accent}\cvDateMarker\EndAccSupp{}%
+        \color{emphasis}~#4}%
+      }%
+    }%
+  }%
+  \par\medskip\normalsize
 }
 
 % v1.7: adds accsupp for the icon as well

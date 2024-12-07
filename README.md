@@ -1,8 +1,10 @@
-# AltaCV, yet another LaTeX CV/Résumé class | Forked by NicolasOmar
+# AltaCV, yet another LaTeX CV/Résumé class | Forked by gcroci2
 
 v1.7.1 (25 Aug 2023), by LianTze Lim (liantze@gmail.com)
 
 v1.7.1b (11 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@gmail.com)
+
+v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 
 ## Original Sample
 
@@ -23,6 +25,11 @@ v1.7.1b (11 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@g
 * Sample file with new `paracol` layout added on 2 February 2020
 
 ## Forked Sample
+
+* `v1.7.1c` (7 Dec 2024):
+  * **Added:** shade to the sections separation line, (google) `scholar` field, and a new section for open-source projects.
+  * **Updated:** improved header spacing, aligned location and date icons across sections, updated color palette, and cv sections titles.
+  * **Removed:** photo in the header, and the `darkmode` option.
 
 * `v1.7.1b` (11 Jan 2024):
   * **Added:** (`markword`) tag created to change a word color using the assigned in `accent`.
@@ -48,51 +55,19 @@ v1.7.1b (11 Jan 2024), by Nicolás Omar González Passerino (nicolas.passerino@g
   * **Updated:** (`\cvevent`) structure modified to include change title, company name, start/end dates and work location (only a string).
   * **Updated:** (`\cvtag`) items now have a more consistent vertical and horizontal separation.
 
-Though if you're creating your own CV/résumé, you'd probably prefer using the online template ([view/open on Overleaf](https://www.overleaf.com/latex/templates/altacv-nicolasomar-fork/htfpmrwhbwpw)):
-
-### This is how the final version looks like on Light & Dark mode
-<img src="sampleLightMode.png" title="Résumé sample | Light mode, based on AltaCV" alt="Résumé sample | Light mode, based on AltaCV" width="300px">
-<img src="sampleDarkMode.png" title="Résumé sample | Dark mode, based on AltaCV" alt="Résumé sample | Dark mode, based on AltaCV" width="300px">
+### This is how the final version looks like
+<img src="sample_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample | Light mode, based on AltaCV" width="300px">
+<img src="sample_pag2.png" title="Résumé sample | Dark mode, based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300px">
 
 ## Requirements and Compilation
 
 * pdflatex + biber + pdflatex
 * AltaCV uses [`fontawesome5`](http://www.ctan.org/pkg/fontawesome5).
-* Use the `normalphoto` option to get normal (i.e. non-circular) photos.
-* As of v1.2 you can add multiple photos on the left or right: `\photoL{2cm}{logo1}` and `\photoR{2.5cm}{logo2,photo}`. (`\photo` will work like `\photoR`.) Separate your image filenames with commas _without_ spaces.
 * Use the `ragged2e` option to activate hyphenations while keeping text left-justified; line endings will thus be less jagged and more aesthetically pleasing.
 * As of v1.3 the `withhyper` document class option will make the "personal info" fields into clickable hyperlinks (where it makes sense). See below for more details.
 * Can now be compiled with pdflatex, XeLaTeX and LuaLaTeX!
-  * Note that to compile with XeLaTeX, you should use a command line as follows, per [the `pdfx` documentation](http://mirrors.ctan.org/macros/latex/contrib/pdfx/pdfx.pdf): `xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex`
+  * Note that to compile with XeLaTeX, you should use a command line as follows, per [the `pdfx` documentation](http://mirrors.ctan.org/macros/latex/contrib/pdfx/pdfx.pdf): `xelatex -shell-escape -output-driver="xdvipdfmx -z 0" main.tex`
 * The samples here use the [Lato](http://www.latofonts.com/lato-free-fonts/) and [Roboto Slab fonts](https://github.com/googlefonts/robotoslab). Feel free to use a different typeface package instead—often a different typeface will change the entire CV's feel.
-
-## `sample.tex` ##
-
-This file was first created as `sample-alt.tex` on 2 Feb 2020. **It is the default sample LaTeX file since 10 May 2020.**
-
-Many users have overlooked the optional argument of `\cvsection` to insert the right sidebar contents, and often confused that the right sidebar doesn't automatically break across pages. This new layout uses the `paracol` package for typesetting the left and right columns that _can_ break across pages. It also makes changing the column widths easier:
-
-```latex
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.6}
-
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
-\cvsection{Experience}
-...
-... END OF LEFT COLUMN CONTENTS ...
-
-% Now switch to the right column.
-\switchcolumn
-\cvsection{Education}
-...
-...END OF RIGHT COLUMN CONTENTS ...
-\end{paracol}
-```
-You can also use `\swithcolumn*` for "synchronising" the columns, as well as other commands from the `paracol` package. See the [`paracol` package documentation](http://texdoc.net/pkg/paracol) for further details.
-
-**You do not need use the `fullwidth` environment nor use optional arguments with `\cvsection` with this new template.**
 
 ## Clickable Info fields
 
@@ -111,9 +86,7 @@ If your homepage doesn't use HTTPS yet, or if you want to use a different symbol
 
 ## New Information Fields ####
 
-I've decided against adding definitions for too many fields and symbols in the `.cls` itself; otherwise we'll have all possible platforms in the world (and more services are born everyday!) within `altacv.cls` before we know it.
-
-You can actually just typeset your own arbitrary information fields using the `\printinfo{symbol}{detail}[optional hyperlink prefix]` command within `\personalinfo`:
+You can just typeset your own arbitrary information fields using the `\printinfo{symbol}{detail}[optional hyperlink prefix]` command within `\personalinfo`:
 
 ````latex
 \printinfo{\faPaw}{Hey ho!}
@@ -148,8 +121,7 @@ then you can use `\mastodon` with TWO arguments where the 2nd argument is the fu
 
 ## Configurable colours
 
-Use `\colorlet` or `\definecolor` to change these; see examples 
-in preamble of `sample.tex`.
+Use `\colorlet` or `\definecolor` to change these.
 * `accent`
 * `emphasis`
 * `heading`
@@ -161,8 +133,7 @@ in preamble of `sample.tex`.
 
 ## Configurable fonts
 
-Use `\renewcommand` to change these; see examples in preamble of
-`sample.tex`.
+Use `\renewcommand` to change these.
 * `\namefont`
 * `\taglinefont`
 * `\personalinfofont`
@@ -171,8 +142,7 @@ Use `\renewcommand` to change these; see examples in preamble of
 
 ## Configurable icons
 
-Use `\renewcommand` to change these; see examples in preamble of
-`sample.tex`.
+Use `\renewcommand` to change these.
 * `\cvItemMarker` (bullets for `itemize`)
 * `\cvRatingMarker` (for `\cvskill`)
 * `\cvDateMarker` (for date in `\cvevent`)
@@ -186,7 +156,7 @@ You could try running `pdftotext -raw sample.pdf` to view the text-only version 
 
 Alternatively running `pdftotext -layout sample.pdf` to view the text-only version in a pseudo-two-column layout.
 
-In particular `\locationname` and `\datename` hold the replacement text for the location and date/duration icon in `\cvevent`. These can be re-defined especially if your CV is in a non-English language, e.g. Spanish (see commented examples in preamble of `sample.tex`):
+In particular `\locationname` and `\datename` hold the replacement text for the location and date/duration icon in `\cvevent`. These can be re-defined especially if your CV is in a non-English language, e.g. Spanish.
 
 ```latex
 \renewcommand{\locationname}{Ubicación}
