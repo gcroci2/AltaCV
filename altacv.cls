@@ -265,27 +265,34 @@
   \textcolor{accent}{\href{#2}{#1}}
 }
 
-% v1.7: adds accsupp ActualText for location and date markers
-% Fork v1.7.1a: Structure adjusted with fork's styling
 \newcommand{\cvevent}[4]{%
-  {\large\color{emphasis}#1}
-  \smallskip\normalsize
-  \ifstrequal{#2}{}{}{%
-    \large{\color{accent} | #2\par}
-    \smallskip}%
-  \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}
-      \color{accent}\cvDateMarker\EndAccSupp{}%
-      \color{emphasis}~#3}%
-    }}%
-  \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}
-      \color{accent}\cvLocationMarker\EndAccSupp{}%
-      \color{emphasis}~#4}%
-    }}\par
-  \medskip\normalsize
+  % Title and Subtitle
+  \noindent
+  \makebox[0.4\linewidth][l]{%
+    {\large\color{emphasis}#1}
+    \smallskip\normalsize
+    \ifstrequal{#2}{}{}{%
+      \large{\color{accent} | #2}%
+      \smallskip}%
+  }%
+  % Location and Date
+  \makebox[0.6\linewidth][l]{%
+    \ifstrequal{#3}{}{}{%
+      {\small\makebox[0.3\linewidth][l]%
+        {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}%
+        \color{accent}\cvLocationMarker\EndAccSupp{}%
+        \color{emphasis}~#3}%
+      }%
+    }%
+    \ifstrequal{#4}{}{}{%
+      {\small\makebox[0.4\linewidth][l]%
+        {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}%
+        \color{accent}\cvDateMarker\EndAccSupp{}%
+        \color{emphasis}~#4}%
+      }%
+    }%
+  }%
+  \par\medskip\normalsize
 }
 
 % v1.7: adds accsupp for the icon as well
