@@ -23,6 +23,7 @@
 
 \documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
+\usepackage{academicons}
 %% AltaCV uses the fontawesome5 and academicons fonts
 %% and packages.
 %% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
@@ -86,25 +87,17 @@
     \name{John Doe}
     \tagline{Test Developer}
 
-    \personalinfo{
-        \email{john_doe@email.com}\smallskip
-        \phone{+01-2345-678901}
-        \location{City, Country}\\
-        \linkedin{linkedinUser}
-        \github{githubUser}
-        \npm{npmUser}
-        \dev{devtoUser}
-        %\homepage{nicolasomar.me}
-        %\medium{nicolasomar}
-        %% You MUST add the academicons option to \documentclass, then compile with LuaLaTeX or XeLaTeX, if you want to use \orcid or other academicons commands.
-        % \orcid{0000-0000-0000-0000}
-        %% You can add your own arbtrary detail with
-        %% \printinfo{symbol}{detail}[optional hyperlink prefix]
-        % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
-        %% Or you can declare your own field with
-        %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
-        % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
-        % \gitlab{your_id}
+    \personalinfo{%
+    \begin{minipage}{0.6\textwidth}
+      \email{john_doe@email.com}\\[0.2cm]
+      \phone{+01-2345-678901}\\[0.2cm]
+      \orcid{0000-0000-0000-0000}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}
+      \github{githubUser}\\[0.2cm]
+      \linkedin{linkedinUser}\\[0.2cm]
+      \scholar{scholarID}
+    \end{minipage}%
     }
     
     \makecvheader

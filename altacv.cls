@@ -208,6 +208,7 @@
 \NewInfoField{twitter}{\faTwitter}[https://twitter.com/]
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
 \NewInfoField{github}{\faGithub}[https://github.com/]
+\NewInfoField{scholar}{\faGraduationCap}[https://scholar.google.com/citations?user=]
 % v1.?? Use fontawesome5 for Orcid symbol
 \NewInfoField{orcid}{\faOrcid}[https://orcid.org/]
 \NewInfoField{location}{\cvLocationMarker}
@@ -224,15 +225,17 @@
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \hfill%
-    \begin{minipage}{\dimexpr\linewidth}%
-    \raggedright%
-    {\namefont\color{name}\MakeUppercase{\@name}\par}
-    \medskip
-    {\taglinefont\color{tagline}\@tagline\par}
-    \medskip
-    {\personalinfofont\@personalinfo\par}
-    \end{minipage}\hfill%
+    \noindent
+    \begin{minipage}{0.6\textwidth}%
+      \raggedright%
+      {\namefont\color{name}\MakeUppercase{\@name}\par}
+      \medskip
+      {\taglinefont\color{tagline}\@tagline\par}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}%
+      \raggedright%
+      {\personalinfofont\@personalinfo\par}
+    \end{minipage}%
     \par%
   \endgroup\medskip
 }
