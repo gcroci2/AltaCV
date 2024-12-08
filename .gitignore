@@ -1,5 +1,5 @@
-main.*
+cv.*
 pdfa.*
-!main.tex
+!cv.tex
 cover.*
 !cover.tex

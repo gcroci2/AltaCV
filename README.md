@@ -28,7 +28,7 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 
 * `v1.7.1c` (7 Dec 2024):
   * **Added:** shade to the sections separation line, (google) `scholar` field, and a new section for open-source projects. Added cover letter template.
-  * **Updated:** improved header spacing, aligned location and date icons across sections, updated color palette, and cv sections titles.
+  * **Updated:** improved header spacing, aligned location and date icons across sections, updated color palette, and cv sections titles. Renamed `main.tex` to `cv.tex`, and added folders for images and bibliography configuration.
   * **Removed:** photo in the header, and the `darkmode` option.
 
 * `v1.7.1b` (11 Jan 2024):
@@ -59,8 +59,7 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 
 #### CV
 
-<img src="fig/cv_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample page 1 | based on AltaCV" width="250px">
-<img src="fig/cv_pag2.png" title="Résumé sample page 2 | based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="250px">
+<img src="fig/cv_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample page 1 | based on AltaCV" width="300"> <img src="fig/cv_pag2.png" title="Résumé sample page 2 | based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300">
 
 #### Cover Letter
 
