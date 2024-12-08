@@ -27,7 +27,7 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 ## Forked Sample
 
 * `v1.7.1c` (7 Dec 2024):
-  * **Added:** shade to the sections separation line, (google) `scholar` field, and a new section for open-source projects.
+  * **Added:** shade to the sections separation line, (google) `scholar` field, and a new section for open-source projects. Added cover letter template.
   * **Updated:** improved header spacing, aligned location and date icons across sections, updated color palette, and cv sections titles.
   * **Removed:** photo in the header, and the `darkmode` option.
 
@@ -56,8 +56,15 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
   * **Updated:** (`\cvtag`) items now have a more consistent vertical and horizontal separation.
 
 ### This is how the final version looks like
-<img src="sample_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample | Light mode, based on AltaCV" width="300px">
-<img src="sample_pag2.png" title="Résumé sample | Dark mode, based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300px">
+
+#### CV
+
+<img src="cv_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample page 1 | based on AltaCV" width="300px">
+<img src="cv_pag2.png" title="Résumé sample page 2 | based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300px">
+
+#### Cover Letter
+
+<img src="cover.png" title="Cover letter sample | based on AltaCV" alt="Cover letter sample | based on AltaCV" width="300px">
 
 ## Requirements and Compilation
 
