@@ -218,6 +218,7 @@
 \NewInfoField{npm}{\faNpm}[https://www.npmjs.com/~]
 
 \newcommand{\namefont}{\Huge\bfseries}
+\newcommand{\namefontcover}{\LARGE\bfseries}
 \newcommand{\taglinefont}{\large\bfseries}
 \newcommand{\personalinfofont}{\footnotesize\bfseries}
 \newcommand{\cvsectionfont}{\LARGE\bfseries}
@@ -228,7 +229,7 @@
     \noindent
     \begin{minipage}{0.6\textwidth}%
       \raggedright%
-      {\namefont\color{name}\MakeUppercase{\@name}\par}
+      {\namefont\color{name}{\@name}\par}
       \medskip
       {\taglinefont\color{tagline}\@tagline\par}
     \end{minipage}%
@@ -236,6 +237,20 @@
       \raggedright%
       {\personalinfofont\@personalinfo\par}
     \end{minipage}%
+    \par%
+  \endgroup\medskip
+}
+
+\newcommand{\makecoverheader}{%
+  \begingroup
+    \noindent
+    {\raggedright%
+      {\namefontcover\color{name}{\@name}\par}
+      \medskip
+      {\taglinefont\color{tagline}\@tagline\par}
+      \medskip
+      {\personalinfofont\@personalinfo\par}
+    }%
     \par%
   \endgroup\medskip
 }

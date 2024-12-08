@@ -1,3 +1,5 @@
 main.*
 pdfa.*
 !main.tex
+cover.*
+!cover.tex

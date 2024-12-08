@@ -1,0 +1,105 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AltaCV Cover Letter Template
+% Matching header style with CV
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[12pt,a4paper,ragged2e,withhyper]{altacv}
+
+\usepackage{academicons}
+\usepackage{paracol}
+
+% Page layout
+\geometry{left=2.5cm,right=2.5cm,top=2cm,bottom=2cm,columnsep=0.75cm}
+
+% Font configuration
+\ifxetexorluatex
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Colors (matching your CV)
+\definecolor{PrimaryColor}{HTML}{383838}
+\definecolor{SecondaryColor}{HTML}{9D0137}
+\definecolor{ThirdColor}{HTML}{DCEA8E}
+\definecolor{BodyColor}{HTML}{666666}
+\definecolor{EmphasisColor}{HTML}{2E2E2E}
+\definecolor{BackgroundColor}{HTML}{FFFFFF}
+
+\colorlet{name}{PrimaryColor}
+\colorlet{tagline}{SecondaryColor}
+\colorlet{heading}{PrimaryColor}
+\colorlet{headingrule}{ThirdColor}
+\colorlet{subheading}{SecondaryColor}
+\colorlet{accent}{SecondaryColor}
+\colorlet{emphasis}{EmphasisColor}
+\colorlet{body}{BodyColor}
+\pagecolor{BackgroundColor}
+
+% Font styles (matching your CV)
+\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\small\bfseries}
+\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+\input{pubs-num-cover.cfg}
+\addbibresource{main.bib}
+
+\begin{document}
+    \name{John Doe}
+    \tagline{}
+    
+    \personalinfo{%
+      \email{john_doe@email.com}\\[0.1cm]
+      \orcid{0000-0000-0000-0000}\\[0.1cm]
+      \linkedin{linkedinUser}\\[0.1cm]
+      \github{githubUser}
+    }
+    
+    \makecoverheader
+
+    \bigskip
+    
+    \today
+
+    \bigskip
+
+    Dear Hiring Manager,
+
+    \smallskip
+
+    {\justify
+
+    Your cover letter content goes here. Content example: I am writing to apply for the position of [position] at [company]. I am confident that my skills are well-aligned with the role, and that I would be an excellent fit for your organization \cite{else:lim:2010}.
+
+    \bigskip
+
+    Another paragraph example: I am a [insert your profession] with a [insert your degree] in [insert your field]. I have a proven track record of [insert your skills]. I am excited to apply for this position because [insert reasons why you are excited about the job].
+
+    }
+
+    \bigskip
+
+    Looking forward to hearing back from you.
+
+    \bigskip
+    \medskip
+
+    {\hspace{10cm}Sincerely,\\
+    \hspace{10cm}John Doe}
+
+    \defbibheading{subbibliography}{%
+    \section*{\normalsize References}
+    \vspace{0.2cm}
+    }
+    \bigskip
+    \addcontentsline{toc}{section}{References}
+    \printbibliography[heading=subbibliography]
+
+\end{document}
