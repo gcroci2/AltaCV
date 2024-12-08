@@ -64,7 +64,7 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 
 #### Cover Letter
 
-<img src="fig/cover.png" title="Cover letter sample | based on AltaCV" alt="Cover letter sample | based on AltaCV" width="300px">
+<img src="fig/coverletter.png" title="Cover letter sample | based on AltaCV" alt="Cover letter sample | based on AltaCV" width="300px">
 
 ## Requirements and Compilation
 
