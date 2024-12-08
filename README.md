@@ -59,12 +59,12 @@ v1.7.1c (7 Dec 2024), by Giulia Crocioni (crocioni.giulia@gmail.com)
 
 #### CV
 
-<img src="cv_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample page 1 | based on AltaCV" width="300px">
-<img src="cv_pag2.png" title="Résumé sample page 2 | based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300px">
+<img src="fig/cv_pag1.png" title="Résumé sample page 1 | based on AltaCV" alt="Résumé sample page 1 | based on AltaCV" width="300px">
+<img src="fig/cv_pag2.png" title="Résumé sample page 2 | based on AltaCV" alt="Résumé sample page 2 | based on AltaCV" width="300px">
 
 #### Cover Letter
 
-<img src="cover.png" title="Cover letter sample | based on AltaCV" alt="Cover letter sample | based on AltaCV" width="300px">
+<img src="fig/cover.png" title="Cover letter sample | based on AltaCV" alt="Cover letter sample | based on AltaCV" width="300px">
 
 ## Requirements and Compilation
 
